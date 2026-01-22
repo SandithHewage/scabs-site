@@ -3,85 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SCABS</title><!doctype html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>SCABS</title>
-        <meta name="description" content="Join the SCABS early-access list for updates." />
-        <meta name="author" content="Sandith Hewage" />
-        <link rel="preload" href="/style.css" as="style" />
-        <link rel="stylesheet" href="/style.css" />
-      </head>
-
-      <body class="scabs-body">
-        <div class="page-container">
-          <header class="header">
-            <a href="/" aria-label="SCABS Home">
-              <img src="/assets/logo.webp" alt="SCABS logo" class="logo" />
-            </a>
-          </header>
-
-          <main class="content">
-            <div class="center-button-container" id="centerButtonContainer">
-              <button class="scabs-button" id="joinButton" type="button">JOIN MAILING LIST</button>
-            </div>
-
-            <div class="email-form-container" id="emailFormContainer">
-              <div class="form-card">
-                <input type="email" id="emailInput" class="email-input" placeholder="Email" autocomplete="email" required/>
-
-                <div class="phone-row">
-                  <div class="country-select-wrapper">
-                    <select id="countryCode" class="country-select" aria-label="Country">
-                      <option value="US" selected>US</option>
-                      <option value="UK">UK</option>
-                      <option value="AU">AU</option>
-                      <option value="DE">DE</option>
-                      <option value="FR">FR</option>
-                      <option value="ES">ES</option>
-                      <option value="IT">IT</option>
-                      <option value="NL">NL</option>
-                      <option value="SE">SE</option>
-                      <option value="NO">NO</option>
-                      <option value="DK">DK</option>
-                      <option value="NZ">NZ</option>
-                      <option value="JP">JP</option>
-                      <option value="KR">KR</option>
-                      <option value="CN">CN</option>
-                      <option value="IN">IN</option>
-                    </select>
-                  </div>
-
-                  <input type="tel" id="phoneInput" class="phone-input" placeholder="Phone number" autocomplete="tel" inputmode="tel" required/>
-                </div>
-
-                <button class="scabs-button signup-button" id="signupButton" type="button" disabled>JOIN</button>
-
-                <p class="consent-text">
-                  By joining, you consent to receive email and SMS communications from SCABS. Message and data rates may apply. Consent is not required for purchase. You may opt out at any time by replying STOP. See our
-                  <a href="/privacy">Privacy Policy</a>
-                  to learn more.
-                </p>
-              </div>
-            </div>
-
-            <div class="thankyou-message" id="thankYouMessage">
-              <p>Thank you for joining the mailing list.</p>
-            </div>
-          </main>
-
-          <footer class="footer">
-            <a href="/privacy" class="footer-privacy">PRIVACY</a>
-            <p class="footer-copy">&copy; 2026 SCABS GROUP LLC. All Rights Reserved.</p>
-          </footer>
-        </div>
-
-        <script src="/app.js" defer></script>
-      </body>
-    </html>
-
+    <title>SCABS</title>
     <meta name="description" content="Join the SCABS early-access list for updates." />
     <meta name="author" content="Sandith Hewage" />
     <link rel="preload" href="/style.css" as="style" />
@@ -103,7 +25,14 @@
 
         <div class="email-form-container" id="emailFormContainer">
           <div class="form-card">
-            <input type="email" id="emailInput" class="email-input" placeholder="Email" autocomplete="email" />
+            <input
+              type="email"
+              id="emailInput"
+              class="email-input"
+              placeholder="Email"
+              autocomplete="email"
+              required
+            />
 
             <div class="phone-row">
               <div class="country-select-wrapper">
@@ -127,15 +56,24 @@
                 </select>
               </div>
 
-              <input type="tel" id="phoneInput" class="phone-input" placeholder="Phone number" autocomplete="tel" inputmode="tel" />
+              <input
+                type="tel"
+                id="phoneInput"
+                class="phone-input"
+                placeholder="Phone number"
+                autocomplete="tel"
+                inputmode="tel"
+                required
+              />
             </div>
 
-            <button class="scabs-button signup-button" id="signupButton" type="button" disabled>JOIN</button>
+            <button class="scabs-button signup-button" id="signupButton" type="button" disabled>
+              JOIN
+            </button>
 
             <p class="consent-text">
               By joining, you consent to receive email and SMS communications from SCABS. Message and data rates may apply. Consent is not required for purchase. You may opt out at any time by replying STOP. See our
-              <a href="/privacy">Privacy Policy</a>
-              to learn more.
+              <a href="/privacy">Privacy Policy</a> to learn more.
             </p>
           </div>
         </div>
