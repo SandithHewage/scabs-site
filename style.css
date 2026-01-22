@@ -1,0 +1,290 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #1e1e1e !important;
+}
+
+body.scabs-body {
+  background: #1e1e1e !important;
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.page-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+.header {
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  max-width: 150px;
+  height: auto;
+}
+
+.center-button-container,
+.email-form-container,
+.thankyou-message {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -52%);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-button-container {
+  transition: opacity 0.2s ease;
+}
+
+.center-button-container.is-fading-out {
+  opacity: 0;
+}
+
+.center-button-container.is-hidden {
+  pointer-events: none;
+}
+
+.email-form-container {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.email-form-container.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.thankyou-message {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.thankyou-message.is-visible {
+  opacity: 1;
+}
+
+.scabs-button {
+  background: #ffffff;
+  color: #000000;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.signup-button {
+  background: #888;
+  color: #222;
+}
+
+.signup-button.is-enabled {
+  background: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.signup-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.form-card {
+  width: min(420px, 88vw);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.email-input,
+.phone-input,
+.country-select {
+  height: 44px;
+  padding: 0 12px;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: #ffffff;
+  color: #000000;
+  outline: none;
+}
+
+.email-input::placeholder,
+.phone-input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.email-input:focus,
+.phone-input:focus,
+.country-select:focus {
+  border-color: rgba(0, 0, 0, 0.85);
+}
+
+.phone-row {
+  display: flex;
+  gap: 8px;
+}
+
+.country-select-wrapper {
+  width: 64px;
+  flex-shrink: 0;
+}
+
+.country-select {
+  text-align: center;
+  padding-right: 26px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+<path d='M4 9 L12 17 L20 9' fill='none' stroke='black' stroke-width='2.5'/>\
+</svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 14px 10px;
+}
+
+.phone-input {
+  flex: 1;
+}
+
+.consent-text {
+  width: 100%;
+  max-width: 420px;
+  margin: 0;
+  padding: 0;
+  font-size: 0.65rem;
+  line-height: 1.35;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.consent-text a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.consent-text a:hover {
+  opacity: 0.8;
+}
+
+.privacy-page .header {
+  position: static;
+  margin-top: 16px;
+}
+
+.privacy-page .logo {
+  max-width: 120px;
+  opacity: 0.9;
+}
+
+.privacy-content {
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px 32px;
+}
+
+.privacy-sheet {
+  width: min(720px, 92vw);
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.privacy-title,
+.privacy-effective {
+  text-align: center;
+}
+
+.privacy-title {
+  font-size: 1.35rem;
+  margin: 0 0 6px;
+  letter-spacing: 0.4px;
+}
+
+.privacy-effective {
+  font-size: 0.85rem;
+  margin: 0 0 20px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.privacy-sheet p {
+  margin: 0 0 14px;
+}
+
+.privacy-sheet h2 {
+  font-size: 0.9rem;
+  letter-spacing: 0.4px;
+  font-weight: 500;
+  margin: 24px 0 8px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.privacy-sheet a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.privacy-sheet a:hover {
+  opacity: 0.8;
+}
+
+.footer {
+  position: relative;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+.footer-copy {
+  text-align: center;
+  margin: 0;
+}
+
+.footer-privacy {
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-privacy:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
