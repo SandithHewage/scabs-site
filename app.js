@@ -20,10 +20,21 @@ const COUNTRY_RULES = {
   IN: { dial: "+91", min: 10, max: 10 }
 };
 
+function debounce(fn, ms) {
+  let id;
+  return (...args) => {
+    clearTimeout(id);
+    id = setTimeout(() => fn(...args), ms);
+  };
+}
+
+let isSubmitting = false;
+
 const joinButton = document.getElementById("joinButton");
 const centerButtonContainer = document.getElementById("centerButtonContainer");
 const emailFormContainer = document.getElementById("emailFormContainer");
 const thankYouMessage = document.getElementById("thankYouMessage");
+const signupForm = document.getElementById("signupForm");
 
 const emailInput = document.getElementById("emailInput");
 const countryCode = document.getElementById("countryCode");
@@ -42,7 +53,8 @@ function getRule() {
 function buildE164() {
   const digits = digitsOnly(phoneInput.value);
   if (!digits) return "";
-  return `${getRule().dial}${digits}`;
+  const normalized = digits.startsWith("0") ? digits.slice(1) : digits;
+  return `${getRule().dial}${normalized}`;
 }
 
 function isEmailValid(email) {
@@ -83,7 +95,8 @@ function showThankYou() {
 }
 
 async function submitSignup() {
-  if (signupButton.disabled) return;
+  if (signupButton.disabled || isSubmitting) return;
+  isSubmitting = true;
 
   const email = String(emailInput.value || "").trim();
   const phone = buildE164();
@@ -93,11 +106,16 @@ async function submitSignup() {
   signupButton.classList.remove("is-enabled");
   signupButton.textContent = "SENDING...";
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
+
   try {
     const res = await fetch(ENDPOINT_URL, {
       method: "POST",
-      body: new URLSearchParams({ email, phone, country, source: "SCABS_LANDING" })
+      body: new URLSearchParams({ email, phone, country, source: "SCABS_LANDING" }),
+      signal: controller.signal
     });
+    clearTimeout(timeoutId);
 
     const text = await res.text();
     let data = {};
@@ -111,8 +129,13 @@ async function submitSignup() {
 
     showThankYou();
   } catch (err) {
+    clearTimeout(timeoutId);
+    isSubmitting = false;
     console.error(err);
-    alert("Sorry — something went wrong. Please try again.");
+    const msg = err.name === "AbortError"
+      ? "Request timed out. Please check your connection and try again."
+      : "Sorry — something went wrong. Please try again.";
+    alert(msg);
     signupButton.textContent = "JOIN";
     updateSignupState();
     return;
@@ -122,10 +145,10 @@ async function submitSignup() {
 }
 
 joinButton.addEventListener("click", showForm);
-emailInput.addEventListener("input", updateSignupState);
-phoneInput.addEventListener("input", updateSignupState);
+emailInput.addEventListener("input", debounce(updateSignupState, 150));
+phoneInput.addEventListener("input", debounce(updateSignupState, 150));
 countryCode.addEventListener("change", updateSignupState);
-signupButton.addEventListener("click", (e) => {
+signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
   submitSignup();
 });

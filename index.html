@@ -8,13 +8,27 @@
     <meta name="author" content="Sandith Hewage" />
     <link rel="preload" href="/style.css" as="style" />
     <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://script.google.com" />
+    <link rel="dns-prefetch" href="https://script.google.com" />
+    <link rel="canonical" href="https://scabs.online/" />
+    <link rel="icon" href="/assets/logo.webp" type="image/webp" />
+    <link rel="apple-touch-icon" href="/assets/logo.webp" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://scabs.online/" />
+    <meta property="og:title" content="SCABS" />
+    <meta property="og:description" content="Join the SCABS early-access list for updates." />
+    <meta property="og:image" content="https://scabs.online/assets/logo.webp" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="SCABS" />
+    <meta name="twitter:description" content="Join the SCABS early-access list for updates." />
+    <meta name="twitter:image" content="https://scabs.online/assets/logo.webp" />
   </head>
 
   <body class="scabs-body">
     <div class="page-container">
       <header class="header">
         <a href="/" aria-label="SCABS Home">
-          <img src="/assets/logo.webp" alt="SCABS logo" class="logo" />
+          <img src="/assets/logo.webp" alt="SCABS logo" class="logo" width="1024" height="1024" fetchpriority="high" />
         </a>
       </header>
 
@@ -24,61 +38,65 @@
         </div>
 
         <div class="email-form-container" id="emailFormContainer">
-          <div class="form-card">
-            <input
-              type="email"
-              id="emailInput"
-              class="email-input"
-              placeholder="Email"
-              autocomplete="email"
-              required
-            />
-
-            <div class="phone-row">
-              <div class="country-select-wrapper">
-                <select id="countryCode" class="country-select" aria-label="Country">
-                  <option value="US" selected>US</option>
-                  <option value="UK">UK</option>
-                  <option value="AU">AU</option>
-                  <option value="DE">DE</option>
-                  <option value="FR">FR</option>
-                  <option value="ES">ES</option>
-                  <option value="IT">IT</option>
-                  <option value="NL">NL</option>
-                  <option value="SE">SE</option>
-                  <option value="NO">NO</option>
-                  <option value="DK">DK</option>
-                  <option value="NZ">NZ</option>
-                  <option value="JP">JP</option>
-                  <option value="KR">KR</option>
-                  <option value="CN">CN</option>
-                  <option value="IN">IN</option>
-                </select>
-              </div>
-
+          <form id="signupForm" novalidate>
+            <div class="form-card">
+              <label class="sr-only" for="emailInput">Email address</label>
               <input
-                type="tel"
-                id="phoneInput"
-                class="phone-input"
-                placeholder="Phone number"
-                autocomplete="tel"
-                inputmode="tel"
+                type="email"
+                id="emailInput"
+                class="email-input"
+                placeholder="Email"
+                autocomplete="email"
                 required
               />
+
+              <div class="phone-row">
+                <div class="country-select-wrapper">
+                  <select id="countryCode" class="country-select" aria-label="Country">
+                    <option value="US" selected>US</option>
+                    <option value="UK">UK</option>
+                    <option value="AU">AU</option>
+                    <option value="DE">DE</option>
+                    <option value="FR">FR</option>
+                    <option value="ES">ES</option>
+                    <option value="IT">IT</option>
+                    <option value="NL">NL</option>
+                    <option value="SE">SE</option>
+                    <option value="NO">NO</option>
+                    <option value="DK">DK</option>
+                    <option value="NZ">NZ</option>
+                    <option value="JP">JP</option>
+                    <option value="KR">KR</option>
+                    <option value="CN">CN</option>
+                    <option value="IN">IN</option>
+                  </select>
+                </div>
+
+                <label class="sr-only" for="phoneInput">Phone number</label>
+                <input
+                  type="tel"
+                  id="phoneInput"
+                  class="phone-input"
+                  placeholder="Phone number"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  required
+                />
+              </div>
+
+              <button class="scabs-button signup-button" id="signupButton" type="submit" disabled>
+                JOIN
+              </button>
+
+              <p class="consent-text">
+                By joining, you consent to receive email and SMS communications from SCABS. Message and data rates may apply. Consent is not required for purchase. You may opt out at any time by replying STOP. See our
+                <a href="/privacy">Privacy Policy</a> to learn more.
+              </p>
             </div>
-
-            <button class="scabs-button signup-button" id="signupButton" type="button" disabled>
-              JOIN
-            </button>
-
-            <p class="consent-text">
-              By joining, you consent to receive email and SMS communications from SCABS. Message and data rates may apply. Consent is not required for purchase. You may opt out at any time by replying STOP. See our
-              <a href="/privacy">Privacy Policy</a> to learn more.
-            </p>
-          </div>
+          </form>
         </div>
 
-        <div class="thankyou-message" id="thankYouMessage">
+        <div class="thankyou-message" id="thankYouMessage" aria-live="polite">
           <p>Thank you for joining the mailing list.</p>
         </div>
       </main>
